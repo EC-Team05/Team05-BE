@@ -1,12 +1,12 @@
-const siteRouter = require('./site');
-const loginRouter = require('./login');
-const regisRouter = require('./register');
-const serviceRouter = require('./Service');
+var express = require('express');
+var router = express.Router();
 
-function route(app) {
-    app.use('/Service',serviceRouter);
-    app.use('/login',loginRouter);
-    app.use('/register',regisRouter);
-    app.use('/',siteRouter);
-}
-module.exports = route;
+router.use('/', require('./home'));
+router.use('/login', require('./login'));
+router.use('/register', require('./register'));
+
+router.use('/admin', require('./admin/index'));
+router.use('/user', require('./user/index'));
+router.use('/employee', require('./employee/index'));
+
+module.exports = router;
