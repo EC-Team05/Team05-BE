@@ -1,42 +1,44 @@
 const mongoose = require('mongoose');
+const employee = require('./employee');
 var schema = new mongoose.Schema({
-    iduser: {type:Number} ,
-    idemployee: {type:Number} ,
     star: {type:Number} ,
     review: {type:String} , 
-    time: {type: String}
+    time: {type: String},
+    customer: {type:Number} ,
+    employee: {type: Number}
 },{
     collection: 'REVIEW',
 });
-
 const review = mongoose.model('REVIEW',schema)
 module.exports = {
-    async rv() {
-        return await review.aggregate([
-            {
-                $lookup: {
-                from: 'CUSTOMER',
-                localField: 'idc',
-                foreignField: 'iduser',
-                as: 'cus'
-                }
-            },
-            /*{$unwind: "$cus"},
-            {
-                $lookup: {
+    async all(){
+      return await review.aggregate([ 
+        {
+            $lookup: {
                 from: 'EMPLOYEE',
-                localField: 'ide',
-                foreignField: 'idemployee',
-                as: 'emp'
-                }
+                localField: 'employee',
+                foreignField: 'ide',
+                as: 'emp'}
             },
-            {$unwind: "$emp"},*/
-            {$limit:2}
-            ],function (err,res) {
-                if (err) throw err;
-                console.log(res);
+            {
+                $lookup: {
+                    from: 'CUSTOMER',
+                    localField: 'customer',
+                    foreignField: 'idc',
+                    as: 'cus'}
+                },
+            { 
+                $project : { 
+                    _id:0 , review:1 , star:1 , time:1 ,
+                    emp: { firstname:1 , lastname:1},
+                    cus: { name:1 }
+                } 
             }
-            );
+        ],function (err,res) {
+            if (err) throw err;
+            console.log(err);
+        })
     }
 }
+
 

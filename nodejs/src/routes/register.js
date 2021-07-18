@@ -57,12 +57,12 @@ router.post('/store', async function (req, res, next) {
             template : 'mail'
         };
         res.send('check your email to activate your account')
-        tranporter.sendMail(mailOptions,function(error,info){
+        /*tranporter.sendMail(mailOptions,function(error,info){
             if(error){
                 return console.log(error);
             }
             console.log('Message sent:'+info.res);
-        });
+        });*/
         //res.redirect('/login')
     }
     catch {
