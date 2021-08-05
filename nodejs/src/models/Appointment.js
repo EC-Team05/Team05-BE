@@ -19,7 +19,7 @@ const schema = mongoose.Schema({
 
 const appointment = mongoose.model('APPOINTMENT',schema);
 module.exports = {
-    async Lich_Emp(id){
+    async Lich_Emp(){
         return await appointment.aggregate([
             {
                 $match: {

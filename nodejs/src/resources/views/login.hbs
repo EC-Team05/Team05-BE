@@ -1,15 +1,15 @@
 <h1>
     Login
 </h1>
-<fomr action="/login" method="POST">
+<form action="login" method="POST">
     <div>
         <label for="email">Email</label>
-        <input type="email" id="email" name="email"
+        <input type="text" id="email" name="username" placeholder="username" autocomplete="off"
         required>
     </div>
     <div>
         <label for="pass">Pass</label>
-        <input type="pass" id="pass" name="pass"
+        <input type="pass" id="pass" name="pass" placeholder="pass" autocomplete="off"
         required>
     </div>
     <button type="submit">Login</button>
