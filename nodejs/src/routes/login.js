@@ -7,7 +7,7 @@ const bodyParser = require('body-parser')
 const Passport = require('passport')
 const Local = require('passport-local').Strategy
 
-router.use(bodyParser.urlencode({extended: true}))
+//router.use(bodyParser.urlencode({extended: true}))
 router.use(Passport.initialize())
 router.use(Passport.session())
 
