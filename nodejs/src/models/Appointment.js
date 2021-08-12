@@ -19,13 +19,8 @@ const schema = mongoose.Schema({
 
 const appointment = mongoose.model('APPOINTMENT',schema);
 module.exports = {
-    async Lich_Emp(){
-        return await appointment.aggregate([
-            {
-                $match: {
-                    customer : id
-                }
-            },
+    async Lich_Emp(id){
+        return await appointment.findById(id).aggregate([
             {
                 $lookup: {
                     from: 'EMPLOYEE',
@@ -53,12 +48,7 @@ module.exports = {
             })
     },
     async Lich_Cus(id){
-        return await appointment.aggregate([
-            {
-                $match: {
-                    customer : id
-                }
-            },
+        return await appointment.findById(id).aggregate([
             {
                 $lookup: {
                     from: 'EMPLOYEE',
@@ -70,7 +60,7 @@ module.exports = {
                     $lookup: {
                         from: 'CUSTOMER',
                         localField: 'customer',
-                        foreignField: 'idc',
+                        foreignField: '_id',
                         as: 'cus'}
                     },
                 { 

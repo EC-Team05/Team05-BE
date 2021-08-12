@@ -6,7 +6,7 @@ const bcrypt = require('bcrypt')
 const nodemailer = require('nodemailer');
 const { timingSafeEqual } = require('crypto');
 const hbs = require('express-handlebars')
-
+const {regisValidate} = require('../controllers/Validation')
 const smtpConfig = {
     host: 'smtp.gmail.com',
     port: 587 ,
@@ -38,10 +38,16 @@ function makeid(length) {
 router.get('/', function (req, res, next) {
     res.render('register');
 });
+//validate
 
-router.post('/store', async function (req, res, next) {
+
+
+router.post('/', async function (req, res, next) {
     try {
-        const hashed = await bcrypt.hash(req.body.password, 5)
+        const { error } = regisValidate(req.body);
+        if (error)  return res.status(400).send(error.details[0].message);
+        const salt = await bcrypt.genSalt(10);
+        const hashed = await bcrypt.hash(req.body.password,salt)
         CustomerModel.create({
             idc: String(makeid(6)),
             name: req.body.name,
@@ -65,9 +71,9 @@ router.post('/store', async function (req, res, next) {
         });*/
         //res.redirect('/login')
     }
-    catch {
-        res.redirect('/register')
-        console.error();
+    catch (error) {
+        //res.redirect('/register');
+        console.log(error);
     }
     console.log(user)
 });
