@@ -11,7 +11,7 @@ router.get('/', async function (req, res, next) {
         blogCategory : await blogCategory.all(),
         blog: await blog.all(),
         //employee : await employee.top5(),
-        service : await service.all(),
+        service : await service.find({},{_id:0,name:1}),
         review: await review.all()
     });
 });

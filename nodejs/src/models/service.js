@@ -10,10 +10,4 @@ var schema = new mongoose.Schema({
   {
     collection: 'SERVICE'
   });
-
-  const blog = mongoose.model('SERVICE', schema);
-  module.exports = {
-    async all() {
-      return await blog.aggregate( [ { $project : { _id: 0, name : 1 , duration : 1 , price : 1 } } ] );
-    }
-  };
+  module.exports =mongoose.model('SERVICE', schema);

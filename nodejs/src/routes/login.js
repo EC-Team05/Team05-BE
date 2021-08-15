@@ -5,10 +5,8 @@ const EmpModel = require('../models/employee');
 const {loginValidate} = require('../controllers/Validation');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
-const dotenv = require('dotenv');
+const dotenv = require('dotenv').config();
 
-
-dotenv.config();
 
 router.get('/', function (req, res, next) {
     res.render('login');
@@ -28,6 +26,9 @@ router.post('/',async function (req,res,next){
             //create token
             const token = jwt.sign({_id:customer._id},"secret");
             res.header('auth-token',token).send(token);
+        return res.json({
+            token: token
+        })
             
 })
 module.exports = router;
