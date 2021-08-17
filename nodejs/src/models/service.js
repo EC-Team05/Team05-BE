@@ -5,9 +5,10 @@ var schema = new mongoose.Schema({
   idcategory: { type: Number },
   name: { type: String },
   duration: { type: String },
-  price: { type: String }
+  price: { type: String },
+  img: {type: String} 
 },
   {
     collection: 'SERVICE'
   });
-  module.exports =mongoose.model('SERVICE', schema);
+module.exports =mongoose.model('SERVICE', schema);

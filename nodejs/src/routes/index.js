@@ -5,6 +5,7 @@ router.use('/', require('./home'));
 router.use('/user/login', require('./login'));
 router.use('/register', require('./register'));
 
+router.use('/booking-service', require('./service/booking-service'));
 router.use('/admin', require('./admin/index'));
 router.use('/invoice', require('./user/dashboard'));
 router.use('/employee', require('./employee/dashboard'));
