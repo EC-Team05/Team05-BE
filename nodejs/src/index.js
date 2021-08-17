@@ -2,11 +2,14 @@ const express = require('express');
 const morgan = require('morgan');
 const handlebars = require('express-handlebars');
 const path = require('path');
+const cors = require('cors')
 
 const app = express();
 const port = 3000;
 const database = require('./config/db/connectDB.js');
 
+//CORS
+app.use(cors())
 
 //Connect DB
 database.connect();
