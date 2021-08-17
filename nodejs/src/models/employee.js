@@ -17,9 +17,6 @@ var EmployeeSchema = new mongoose.Schema({
     collection: 'EMPLOYEE'
   });
 
-const employee = mongoose.model('EMPLOYEE', EmployeeSchema);
-module.exports = {
-  async top5(){
-    return await employee.aggregate( [ { $project : { _id: 0, firstname : 1 , lastname: 1, img : 1 } } ] );
-  }
-};
+module.exports = mongoose.model('EMPLOYEE', EmployeeSchema);
+
+
