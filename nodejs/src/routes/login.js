@@ -25,10 +25,8 @@ router.post('/',async function (req,res,next){
             console.log(process.env.TOKEN_SECRECT);
             //create token
             const token = jwt.sign({_id:customer._id},"secret");
-            res.header('auth-token',token).send(token);
-        return res.json({
-            token: token
-        })
+            res.header('auth-token',token);
+            res.redirect('/user/profile')
             
 })
 module.exports = router;
