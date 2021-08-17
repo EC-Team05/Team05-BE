@@ -11,7 +11,7 @@ var EmployeeSchema = new mongoose.Schema({
   phone: { type: String },
   rate: { type: Number },
   attended: { type: Number },
-  experience: { type: Number }
+  experience: { type: String }
 },
   {
     collection: 'EMPLOYEE'
