@@ -9,7 +9,7 @@ const review = require('../models/review');
 router.get('/', async function (req, res, next) {
     res.json({
         service : await service.find({},{_id:0,name:1,img:1}),
-        employee : await employee.find({},{_id:0,attended:1,experience:1,img:1,firstname:1}),
+        employee : await employee.find({},{_id:0,attended:1,experience:1,img:1,firstname:1,lastname:1}),
         review: await review.all(),
         blog: await blog.all()
     });
