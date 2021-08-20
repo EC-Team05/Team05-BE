@@ -3,11 +3,12 @@ const router = express.Router();
 const Customer = require('../../models/customer')
 const verify =  require('../../controllers/verify')
 
-router.get('/',verify, async(req, res, next) => {
-    //res.send(req.user);
-    console.log(req.user)
-    const cus = Customer.findOne({_id:req.user})
-    res.json(cus)
+router.post('/', verify,async(req, res, next) => {
+    const id= req.user._id;
+    const cus= await Customer.findOne({_id:id})
+    res.send(cus)
+    //const cus = Customer.findOne({_id:req.user})
+    //res.json(cus)
 });
 
 module.exports = router;
