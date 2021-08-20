@@ -16,7 +16,7 @@ router.get('/', async function (req, res, next) {
 });
 router.get('/booking-stylist', async function (req, res, next) {
     res.json({
-        employee : await employee.top5(),
+        employee : await employee.find(),
     });
 });
 module.exports = router;
