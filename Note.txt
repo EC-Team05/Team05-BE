@@ -1,0 +1,12 @@
+- Tại sao cancel-booking k hiện, k get được change pass
+- Sửa blog grid
+- bỏ xem hóa đơn chi tiết vào nhà tạo mẫu
+//- bỏ nhóm máu trong customer
+- Chỉnh sửa tìm kiếm nhà tạo mẫu
+//- bỏ giải thưởng stylist
+- thêm năm kinh nghiệm cho stylist
+//- bỏ username trong stylist
+
+- Đang làm hồ sơ nhà tạo mẫu 11/7/2020 done
+- Mỗi nhân viên có profile hiện lên cho khách hàng xem để thể hiện sự minh mạch và 
+- Dashboard nhà tạo mẫu 11/7/2020 -> bỏ Loại, bỏ địa chỉ của khách hàng (thay đổi kịch thước cover .appointment-list .profile-info-widget .booking-doc-img img), khách hàng của tôi (bỏ địa chỉ của khách hàng, đặt)

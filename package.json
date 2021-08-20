@@ -1,0 +1,103 @@
+{
+  "name": "pathivu-react",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome": "^1.1.8",
+    "@fortawesome/fontawesome-free-regular": "^5.0.13",
+    "@fortawesome/fontawesome-free-solid": "^5.0.13",
+    "@fortawesome/fontawesome-svg-core": "^1.2.34",
+    "@fortawesome/free-brands-svg-icons": "^5.15.2",
+    "@fortawesome/react-fontawesome": "^0.1.14",
+    "@fullcalendar/daygrid": "^5.6.0",
+    "@fullcalendar/interaction": "^5.6.0",
+    "@fullcalendar/react": "^5.6.0",
+    "@fullcalendar/timegrid": "^5.6.0",
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@testing-library/jest-dom": "^5.11.9",
+    "@testing-library/react": "^11.2.3",
+    "@testing-library/user-event": "^12.6.3",
+    "axios": "^0.21.1",
+    "babel-loader": "^8.2.2",
+    "bootstrap": "^4.6.0",
+    "bootstrap-daterangepicker": "^3.1.0",
+    "bootstrap-daterangepicker-react": "^2.0.5",
+    "chart.js": "^2.9.4",
+    "clean-webpack-plugin": "^3.0.0",
+    "config": "^3.3.3",
+    "css-loader": "^5.0.2",
+    "file-loader": "^6.2.0",
+    "font-awesome": "^4.7.0",
+    "google-maps-react": "^2.0.6",
+    "html-webpack-plugin": "^5.0.0",
+    "jquery": "^3.5.1",
+    "jquery-slimscroll": "^1.3.8",
+    "material-ui-dropzone": "^3.5.0",
+    "mini-css-extract-plugin": "^1.3.6",
+    "owl.carousel": "^2.3.4",
+    "popper.js": "^1.16.1",
+    "react": "^17.0.1",
+    "react-bootstrap": "^1.4.3",
+    "react-bootstrap-daterangepicker": "^7.0.0",
+    "react-calendar": "^3.3.1",
+    "react-chartjs-2": "^2.11.1",
+    "react-custom-scrollbars": "^4.2.1",
+    "react-data-table-component": "^7.0.0-alpha-5",
+    "react-data-table-component-extensions": "^1.5.2",
+    "react-datepicker": "^3.6.0",
+    "react-dnd": "^14.0.2",
+    "react-dnd-html5-backend": "^14.0.0",
+    "react-dom": "^17.0.1",
+    "react-email-editor": "^1.2.0",
+    "react-owl-carousel": "^2.3.3",
+    "react-owl-carousel-loop": "^1.0.8",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "^4.0.2",
+    "react-slick": "^0.28.1",
+    "react-tag-input": "^6.5.2",
+    "sass-loader": "^11.0.1",
+    "slimscroll": "^0.9.1",
+    "style-loader": "^2.0.0",
+    "styled-components": "^5.2.1",
+    "uglifyjs-webpack-plugin": "^2.2.0",
+    "url-loader": "^4.1.1",
+    "web-vitals": "^0.2.4",
+    "webpack-serve": "^3.2.0"
+  },
+  "optionalDependencies": {
+    "fsevents": "^1.2.7"
+  },
+  "scripts": {
+    "start": "webpack serve --mode development --inline --progress",
+    "startdev": "webpack serve --mode development --env development --hot --port 3002",
+    "build": "webpack --mode production",
+    "dev": "webpack-dev-server",
+    "serve": "webpack serve",
+    "production": "webpack --mode production"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "regenerator-runtime": "^0.13.7",
+    "webpack": "^5.50.0",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
