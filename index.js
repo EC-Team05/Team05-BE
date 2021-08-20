@@ -6,7 +6,7 @@ const cors = require('cors')
 
 const app = express();
 const port = process.env.port|| 3000;
-const database = require('./config/db/connectDB.js');
+const database = require('./src/config/db/connectDB.js');
 
 //CORS
 app.use(cors())
@@ -18,7 +18,7 @@ database.connect();
 app.use(morgan('combined'));
 app.use(express.urlencoded({ extended: false}))
 app.use(express.json());
-var indexRouter = require('./routes/index');
+var indexRouter = require('./src/routes/index');
 app.use('/', indexRouter);
 
 //Template
