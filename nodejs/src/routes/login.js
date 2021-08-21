@@ -22,7 +22,6 @@ router.post('/',async function (req,res,next){
             //check password
             const validPass = await bcrypt.compare(user.password,customer.password);
             if(!validPass) return res.status(400).send('password is wrong');
-            console.log(process.env.TOKEN_SECRECT);
             //create token
             const token = jwt.sign({_id:customer._id},"secret");
             res.send(token);

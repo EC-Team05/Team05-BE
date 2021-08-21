@@ -31,7 +31,7 @@ module.exports = {
                 $project : { 
                     _id:0 , review:1 , star:1 , time:1 ,
                     emp: { firstname:1 , lastname:1},
-                    cus: { name:1 }
+                    cus: { name:1 , img :1}
                 } 
             }
         ],function (err,res) {
