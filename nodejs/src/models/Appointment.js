@@ -10,7 +10,7 @@ const schema = new mongoose.Schema({
     date_created: {typme:String},
     start_time: {type:String},
     end_time: {type:String},
-    price: {type:Number},
+    price: {type:String},
     canceled: {type:Boolean},
     cancled_reason: {type:String},
     payment: {type:String},
