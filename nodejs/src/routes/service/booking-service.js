@@ -18,17 +18,16 @@ function makeid(length) {
     }
     return result;
 };
-router.get('/', function (req, res, next) {
-    res.render('register');
-});
 //lấy mảng sv_id từ FE về
 router.post('/', async function (req, res, next) {
     const sv_id = req.body;
-    var today = new Date;
-    const day = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    let sum =0;
+    var sum =0;
     let id_app=makeid(2);
     let idsb =makeid(2); 
+    appoint.create({
+        ida:id_app,
+        sv_booked:idsb
+    })
     sv_id.map(async id => {
        let temp = await Service.findOne({idservice:id})
        Service_b.create({
@@ -37,15 +36,11 @@ router.post('/', async function (req, res, next) {
            price:temp.price,
            duration:temp.duration
        })
-       console.log(sum+=(Number(temp.price)))
+       sum+=(Number(temp.price))
+       await appoint.updateOne({ida:id_app},{price:sum+'.000'})
     })
-    console.log(sum);
-    appoint.create({
-        ida:id_app,
-        sv_booked:idsb,
-        date_created:String(day),
-        price:String(sum)
-    })
+    //console.log(sum);
+    
     res.json({
         save: true,
         id_apppoint: id_app     

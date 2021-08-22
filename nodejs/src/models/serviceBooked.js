@@ -4,7 +4,8 @@ var schema = new mongoose.Schema({
   idsb: { type: Number },
   idservice: { type: Number },
   price: { type: String },
-  amount: { type: Number }
+  amount: { type: Number },
+  duration: {type: String}
 },
   {
     collection: 'SERVICE_BOOKED'
