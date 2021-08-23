@@ -15,7 +15,7 @@ const schema = new mongoose.Schema({
     cancled_reason: {type:String},
     payment: {type:String},
     date_reserved: {type:String},
-    done: {type:Boolean}
+    status: {type:String}
 },{
     collection: 'APPOINTMENT'
 });

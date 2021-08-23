@@ -15,15 +15,16 @@ const schema = new mongoose.Schema({
 });
 const e_shift = mongoose.model('EMPLOYEE_SHIFT',schema)
 module.exports = {
-async detail_shift(date, time){
+async detail_shift(){
     return await e_shift.aggregate([
         {
+            
             $lookup: {
                 from: 'SHIFT',
                 localField: 'idshift',
                 foreignField: 'idshift',
                 as: 'detail'}
-                },
+            },
             {
                 $lookup: {
                     from: 'EMPLOYEE',
@@ -65,12 +66,12 @@ async detail_shift(date, time){
                 }
                 } 
             },
-            { "$match": { "detail.hour_start" : {$lt: time} },
+            /*{ "$match": { "detail.hour_start" : {$lt: time} },
             },
             { "$match": { "detail.hour_end" : {$gt: time} },
             },
             { "$match": { "date" : date },
-            },
+            },*/
             { "$match": { "employee_appointment.status" : { $ne: "Hoàn thành" } },
             },
             { "$match": { "employee_appointment.status" : { $ne: "Hủy" } },

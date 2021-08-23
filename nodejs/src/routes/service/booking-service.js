@@ -3,6 +3,7 @@ const router = express.Router();
 const Service = require('../../models/service')
 const Service_b = require('../../models/serviceBooked')
 const appoint =  require('../../models/Appointment')
+
 router.get('/', async function (req, res, next) {
     res.json({
         service: await Service.find()

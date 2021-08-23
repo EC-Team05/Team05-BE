@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const EmployeeShift = require('../../models/employeeShift');
 const appoint = require('../../models/Appointment')
+const detail_shift=[]
 
 router.post('/', async function (req, res) {
     temp = req.body.chosen_date;
@@ -14,22 +15,21 @@ router.post('/', async function (req, res) {
     const year = today.getFullYear();   // 2020
     const date_cr = (year.toString()+'-'+month.toString()+'-'+day.toString()).toString()
     console.log(date.toString());
-    await appoint.updateOne({ida:id_app},{date_reserved:date,start_time:time+':00',date_created:date_cr})
+    await appoint.updateOne({ida:id_app},{date_reserved:date,start_time:time+':00',date_created:date_cr,status:'Chưa xác nhận'})
     res.json({
         detail_shift: await EmployeeShift.detail_shift(date, time),
         save : true
     })
 });
 
-router.get('/booking-stylist', async function (req, res) {
+router.get('/booking-stylist/', async function (req, res) {
     //res.json(req.query.date)  
-    test = '2021-07-26@20' 
+    //const date_pick=req.params.date;
     //test = condition
-    console.log(test)
-    date = test.slice(0,test.indexOf("@"))
-    time = parseInt(test.slice(test.indexOf("@")+1,test.length))
+    //date = date_pick.slice(0,date_pick.indexOf("@"))
+   // time = parseInt(date_pick.slice(date_pick.indexOf("@")+1,date_pick.length))
     res.json({
-        detail_shift: await EmployeeShift.detail_shift(date, time)
+        detail_shift: await EmployeeShift.detail_shift()
     })
 });
 
