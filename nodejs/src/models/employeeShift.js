@@ -56,6 +56,7 @@ async detail_shift(){
                     lastname: 1,
                     firstname: 1,
                     rate: 1,
+                    ide:1,
                 },
                 employee_appointment: {
                     date_reserved: 1,
