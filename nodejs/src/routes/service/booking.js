@@ -32,5 +32,19 @@ router.get('/booking-stylist/', async function (req, res) {
         detail_shift: await EmployeeShift.detail_shift()
     })
 });
-
+router.post('/save-stylist',async function(req,res){
+    const temp=req.body;
+    try{
+        await appoint.updateOne({ida:temp.id_app},{employee:temp.id_emp})
+        res.json({
+            save:true
+        })
+    }catch(error){
+        console.log(error)
+        res.json({
+            save:false
+        })
+    }
+    
+})
 module.exports = router;

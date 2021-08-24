@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 var schema = new mongoose.Schema({
   idsb: { type: Number },
-  idservice: { type: Number },
+  idservice: { type: String },
   price: { type: String },
   amount: { type: Number },
   duration: {type: String}

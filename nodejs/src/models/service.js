@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 var schema = new mongoose.Schema({
-  idservice: { type: Number },
+  idservice: { type: String },
   idcategory: { type: Number },
   name: { type: String },
   duration: { type: String },
