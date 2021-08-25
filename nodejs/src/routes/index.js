@@ -10,5 +10,5 @@ router.use('/booking', require('./service/booking'));
 router.use('/admin/service/', require('./admin/service'));
 router.use('/invoice', require('./user/dashboard'));
 router.use('/employee', require('./employee/dashboard'));
-
+router.use('/product',require('./product/product'))
 module.exports = router;
