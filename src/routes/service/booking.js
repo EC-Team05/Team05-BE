@@ -15,7 +15,7 @@ router.post('/', async function (req, res) {
     const year = today.getFullYear();   // 2020
     const date_cr = (year.toString()+'-'+month.toString()+'-'+day.toString()).toString()
     console.log(date.toString());
-    await appoint.updateOne({ida:id_app},{date_reserved:date,start_time:time+':00',date_created:date_cr,status:'Chưa xác nhận'})
+    await appoint.updateOne({ida:id_app},{date_reserved:date,start_time:time,date_created:date_cr,status:'Chưa xác nhận'})
     res.json({
         detail_shift: await EmployeeShift.detail_shift(date, time),
         save : true
