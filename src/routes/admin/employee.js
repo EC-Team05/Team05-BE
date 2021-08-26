@@ -47,16 +47,16 @@ router.post('/add',async function(req,res,next){
         })
     }
 })
-/*router.put('/update',async function(req,res,next){
-    const sv_temp=req.body;
+router.post('/update',async function(req,res,next){
+    const sv_temp=req.body.data;
+    const gender = req.body.gender;
+    //sv_temp.push("gender":gender)
     console.log(sv_temp);
     const key = Object.keys(sv_temp)
-    sv_temp.idproduct=String(sv_temp.idproduct)
-    console.log(sv_temp,key)
     try{
-        const sv = await product.findOne({idproduct:sv_temp.idproduct})
+        const sv = await emp.findOne({ide:sv_temp.ide})
         if(!sv) {
-            return res.status(404).send("Can not find this product!")
+            return res.status(404).send("Can not find this employee!")
         }
         key.forEach((update) => sv[update]=sv_temp[update])
         await sv.save();
@@ -73,7 +73,7 @@ router.post('/add',async function(req,res,next){
 router.post('/del',async function(req,res,next){
     let id = req.body.id;
     try{
-        await product.findOneAndDelete({idproduct:id})
+        await emp.findOneAndDelete({ide:id})
         res.json({
             save:true
         })
@@ -83,5 +83,5 @@ router.post('/del',async function(req,res,next){
             save:false
         })
     }
-})*/
+})
 module.exports = router;
