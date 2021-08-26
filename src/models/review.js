@@ -5,7 +5,7 @@ var schema = new mongoose.Schema({
     review: {type:String} , 
     time: {type: String},
     customer: {type:Number} ,
-    employee: {type: Number}
+    employee: {type: String}
 },{
     collection: 'REVIEW',
 });
