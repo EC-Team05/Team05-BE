@@ -1,5 +1,5 @@
 const express = require('express');
-const morgan = require('morgan');
+//const morgan = require('morgan');
 const handlebars = require('express-handlebars');
 const path = require('path');
 const cors = require('cors')
@@ -15,7 +15,7 @@ app.use(cors())
 database.connect();
 
 //HTTP
-app.use(morgan('combined'));
+//app.use(morgan('combined'));
 app.use(express.urlencoded({ extended: false}))
 app.use(express.json());
 var indexRouter = require('./routes/index');
