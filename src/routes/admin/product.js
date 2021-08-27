@@ -1,15 +1,17 @@
 var express = require('express');
 var router = express.Router();
-const service = require('../../models/service')
+const product = require('../../models/Product')
 
 router.post('/add',async function(req,res,next){
     const new_sv=req.body;
+    console.log(new_sv)
     try{
-    service.create({
-        idservice:Number(new_sv.id),
+    product.create({
+        idproduct:(new_sv.idproduct),
         name:new_sv.name,
         price: new_sv.price,
-        duration: new_sv.duration,
+        brand: new_sv.brand,
+        amount: (new_sv.amount),
         img: new_sv.img
     })
     res.json({
@@ -24,13 +26,14 @@ router.post('/add',async function(req,res,next){
 })
 router.put('/update',async function(req,res,next){
     const sv_temp=req.body;
+    console.log(sv_temp);
     const key = Object.keys(sv_temp)
-    sv_temp.idservice=String(sv_temp.idservice)
+    sv_temp.idproduct=String(sv_temp.idproduct)
     console.log(sv_temp,key)
     try{
-        const sv = await service.findOne({idservice:sv_temp.idservice})
+        const sv = await product.findOne({idproduct:sv_temp.idproduct})
         if(!sv) {
-            return res.status(404).send("Can not find this task!")
+            return res.status(404).send("Can not find this product!")
         }
         key.forEach((update) => sv[update]=sv_temp[update])
         await sv.save();
@@ -45,9 +48,9 @@ router.put('/update',async function(req,res,next){
         }
 })
 router.post('/del',async function(req,res,next){
-    let id = String(Object.keys(req.body))
+    let id = req.body.id;
     try{
-        await service.findOneAndDelete({idservice:id})
+        await product.findOneAndDelete({idproduct:id})
         res.json({
             save:true
         })
@@ -57,6 +60,5 @@ router.post('/del',async function(req,res,next){
             save:false
         })
     }
-
 })
 module.exports = router;

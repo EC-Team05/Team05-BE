@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 var EmployeeSchema = new mongoose.Schema({
   email: { type: String },
-  ide: { type: Number },
+  ide: { type: String },
   idstore: { type: Number },
   img: { type: String },
   firstname: { type: String },
@@ -11,7 +11,16 @@ var EmployeeSchema = new mongoose.Schema({
   phone: { type: String },
   rate: { type: Number },
   attended: { type: Number },
-  experience: { type: String }
+  experience: { type: String },
+  dob: {type: String},
+  gender:{type:String},
+  biography:{type:String},
+  employee_type:{type:Number},
+  fburl: {type:String},
+  twitterurl:{type:String},
+  igurl: {type:String},
+  pinteresturl: {type:String},
+  address:{type:String}
 },
   {
     collection: 'EMPLOYEE'
