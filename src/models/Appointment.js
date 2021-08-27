@@ -3,9 +3,9 @@ const sv_bk = require('../models/serviceBooked')
 
 const schema = new mongoose.Schema({
     ida: {type:String},
-    customer: {type:Number},
+    customer: {type:String},
     sv_booked: {type:Number},
-    employee: {type:Number},
+    employee: {type:String},
     store: {type:Number},     
     date_created: {typme:String},
     start_time: {type:Number},
