@@ -6,18 +6,35 @@ const Service = require('../../models/service')
 const Customer = require('../../models/customer')
 const sv = {}
 
-router.get('/:id', async(req, res, next) => {
+router.get('/', async(req, res, next) => {
     const id = req.params.id;
-    const temp = await appoint.findOne({_id:id},{_id:0,date_reserved:1,payment:1,price:1,sv_booked:1,customer:1});
-    const cus =  await Customer.find({idc : temp.customer},{_id:0,name:1})
-    const svb = await serviceBooked.find({idsb : temp.sv_booked},{_id:0,amount:1,price:1,idservice:1})
-    const sv = await Service.find({idservice : svb[0].idservice},{_id:0,name:1,price:1})
-    res.json({
-        invoice: temp,
-        sv_b : svb,
-        sv: sv,
-        cus : cus
-    })
+    try 
+    {
+        const temp = await appoint.findById(id);
+        if(temp)
+        {
+            const cus =  await Customer.find({idc : temp.customer},{_id:0,name:1})
+            let svb = await serviceBooked.find({idsb : temp.sv_booked},{_id:0,amount:1,price:1,idservice:1});
+            let service = []
+            for(let i = 0 ; i < svb.length; i++)
+            {   
+                const sv = await Service.findOne({idservice : svb[i].idservice},{_id:0,name:1,price:1});
+
+                service.push(sv)
+
+            }
+
+            res.json({
+                invoice: temp,
+                sv : service,
+                cus : cus
+            })
+        }       
+    } 
+    catch (error) 
+    {
+
+    }
 });
 
 module.exports = router;
