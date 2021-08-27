@@ -4,7 +4,7 @@ var schema = new mongoose.Schema({
     star: {type:Number} ,
     review: {type:String} , 
     time: {type: String},
-    customer: {type:Number} ,
+    customer: {type:String} ,
     employee: {type: String}
 },{
     collection: 'REVIEW',

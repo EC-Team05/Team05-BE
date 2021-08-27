@@ -5,12 +5,31 @@ const serviceBooked = require('../../models/serviceBooked')
 const Service = require('../../models/service')
 const Customer = require('../../models/customer')
 const sv = {}
-
-router.get('/', async(req, res, next) => {
+router.get('/',async (req,res,next)=>{
+    const temp = await appoint.find()
+    res.json({
+        appoint: await appoint.aggregate([
+            {
+                $lookup: {
+                    from: 'CUSTOMER',
+                    localField: 'customer',
+                    foreignField: 'idc',
+                    as: 'cus'}
+                },
+                { 
+                    $project : { 
+                        _id:1,price:1,date_reserved:1,start_time:1,status:1,ida:1,
+                        cus: { name:1}
+                    } 
+                }
+        ])
+    })
+})
+router.get('/:id', async(req, res, next) => {
     const id = req.params.id;
     try 
     {
-        const temp = await appoint.findById(id);
+        const temp = await appoint.findOne({ida:id});
         if(temp)
         {
             const cus =  await Customer.find({idc : temp.customer},{_id:0,name:1})
@@ -33,8 +52,10 @@ router.get('/', async(req, res, next) => {
     } 
     catch (error) 
     {
-
+        console.log(error)
     }
 });
-
+router.post('/update',async (req,res,next)=>{
+    console.log(req.body)
+})
 module.exports = router;
