@@ -11,15 +11,15 @@ router.get('/',async (req,res,next)=>{
         appoint: await appoint.aggregate([
             {
                 $lookup: {
-                    from: 'CUSTOMER',
-                    localField: 'customer',
-                    foreignField: 'idc',
-                    as: 'cus'}
+                    from: 'EMPLOYEE',
+                    localField: 'employee',
+                    foreignField: 'ide',
+                    as: 'emp'}
                 },
                 { 
                     $project : { 
-                        _id:1,price:1,date_reserved:1,start_time:1,status:1,ida:1,
-                        cus: { name:1}
+                        _id:1,price:1,date_reserved:1,start_time:1,status:1,ida:1,date_created:1,
+                        emp: { firstname:1,lastname:1}
                     } 
                 }
         ])
@@ -56,6 +56,20 @@ router.get('/:id', async(req, res, next) => {
     }
 });
 router.post('/update',async (req,res,next)=>{
-    console.log(req.body)
+    const data = req.body.status;
+    let id = data.substring(0, 2);
+    let status=data.substring(3,data.length)
+    try{
+        await appoint.updateOne({ida:id},{status:status})
+        res.json({
+            save:true
+        })
+    }catch(error){
+        console.log(error);
+        res.json({
+            save:false
+        })
+    }
+
 })
 module.exports = router;
