@@ -6,7 +6,36 @@ const appoint = require('../../models/Appointment');
 router.post('/', async function (req, res) {
     id_app = req.body.id_appoint;
     res.json({
-        detail_app: await sb.detail_appointment(id_app),
+        detail_app: await sb.aggregate(
+            [
+                
+                {
+                $lookup: {
+                    from: 'APPOINTMENT',
+                    localField: 'idsb',
+                    foreignField: 'sv_booked' ,
+                    as: 'Appointment'
+                },
+                },
+                {
+                $project: {
+                    idsb: 1,
+                    idservice: 1,
+                    price: 1,
+                    duration: 1,
+                    Appointment: {
+                    ida: 1,
+                    start_time: 1,
+                    end_time: 1,
+                    status: 1,
+                    payment: 1
+                    }
+                }
+                },
+                { "$match": { "Appointment.ida" : id_app},
+                },
+            ]
+            ),
     })
 });
 
