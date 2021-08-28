@@ -35,17 +35,13 @@ router.post('/',verify, async function (req, res, next) {
         customer: cus.idc.toString()
     })
     sv_id.map(async id => {
-       let temp = await Service.findOne({idservice:id})
-       Service_b.create({
-           idsb:idsb,
-           idservice:temp.idservice,
-           price:temp.price,
-           duration:temp.duration
-       })
-       sum+=(Number(temp.price))
-       await appoint.updateOne({ida:id_app},{price:sum+'.000'})
+        let temp = await Service.findOne({idservice:id})
+        Service_b.create_sv(idsb, temp.idservice, temp.price, temp.duration)
+        sum+=(Number(temp.price))
+        await appoint.updateOne({ida:id_app},{price:sum+'.000'})
     })
     //console.log(sum);
+    
     res.json({
         save: true,
         id_apppoint: id_app     
