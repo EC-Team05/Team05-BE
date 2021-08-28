@@ -4,6 +4,7 @@ const appoint = require('../../models/Appointment');
 const serviceBooked = require('../../models/serviceBooked')
 const Service = require('../../models/service')
 const Customer = require('../../models/customer')
+
 const sv = {}
 router.get('/',async (req,res,next)=>{
     const temp = await appoint.find()
