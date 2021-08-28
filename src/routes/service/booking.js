@@ -35,7 +35,7 @@ router.get('/booking-stylist/', async function (req, res) {
 router.post('/save-stylist',async function(req,res){
     const temp=req.body;
     try{
-        await appoint.updateOne({ida:temp.id_app},{employee:temp.id_emp})
+        await appoint.updateOne({ida:temp.id_app},{employee:temp.id_emp.toString()})
         res.json({
             save:true
         })
