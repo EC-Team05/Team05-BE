@@ -32,7 +32,7 @@ router.get('/:token',async(req,res,next)=>{
                 },
                 { 
                     $project : { 
-                        _id:1,price:1,date_reserved:1,start_time:1,status:1,ida:1,date_created:1,
+                        _id:1,price:1,date_reserved:1,start_time:1,status:1,ida:1,date_created:1,customer:1,
                         emp: { firstname:1,lastname:1}
                     } 
                 }
